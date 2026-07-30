@@ -6,7 +6,7 @@ def multiply(a,b):
     return a*b
 def divide(a,b):
    return a/b
-
+history=[]
 running = True
 while running :
     try :
@@ -15,16 +15,19 @@ while running :
         number2 = float(input("Second Number : "))
 
         if operator == "+":
-    	    print(add(number1,number2))
+    	    result=add(number1,number2)
         elif operator == "-":
-            print(subtract(number1,number2))
+            result=subtract(number1,number2)
         elif operator == "*":
-            print(multiply(number1,number2))
+            result=multiply(number1,number2)
         elif operator == "/":
-            print(divide(number1,number2))
+            result=divide(number1,number2)
         else :
             print("Invalid Operator")
             continue
+        print(result)
+        history_text=f"{number1} {operator} {number2} = {result}"
+        history.append(history_text)
     except ValueError :
         print ("Enter Numbers Only")
         continue
@@ -38,4 +41,6 @@ while running :
     else :
         running = False
 print("Good Bye")
-
+print("\nCalculation History:")
+for i in range(len(history)):
+    print (f"{i+1}.  {history[i]}")
